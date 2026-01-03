@@ -22,10 +22,5 @@ func home(c *gin.Context) {
 }
 
 func notFound(c *gin.Context) {
-	path := c.Param("path")
-	if path == ".env" {
-		c.HTML(http.StatusOK, "suck.html", gin.H{})
-		return
-	}
 	c.HTML(http.StatusOK, "404.html", gin.H{})
 }
