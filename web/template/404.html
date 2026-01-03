@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница не найдена - SneakerNews</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #F5F1EB;
+            color: #5D4037;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            padding: 25px 0;
+            background-color: rgba(93, 64, 55, 0.9);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            color: #D7CCC8;
+            font-size: 2.2rem;
+        }
+        
+        .logo-text {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #FFF;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        .logo-text span {
+            color: #D7CCC8;
+        }
+        
+        /* Main Content */
+        .error-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 0;
+            position: relative;
+        }
+        
+        .error-number {
+            font-size: 12rem;
+            font-weight: 900;
+            color: #8D6E63;
+            line-height: 1;
+            margin-bottom: 20px;
+            text-shadow: 5px 5px 0 rgba(141, 110, 99, 0.2);
+            position: relative;
+        }
+        
+        .error-number::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 3px;
+            background-color: #8D6E63;
+        }
+        
+        .error-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #5D4037;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+        
+        .error-message {
+            font-size: 1.5rem;
+            color: #8D6E63;
+            max-width: 700px;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+        
+        .sneaker-illustration {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, #8D6E63, #A1887F);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 35px rgba(93, 64, 55, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sneaker-illustration i {
+            font-size: 8rem;
+            color: #D7CCC8;
+            z-index: 2;
+        }
+        
+        .sneaker-illustration::before {
+            content: "404";
+            position: absolute;
+            font-size: 12rem;
+            font-weight: 900;
+            color: rgba(215, 204, 200, 0.1);
+            z-index: 1;
+        }
+        
+        .sneaker-illustration::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, rgba(215, 204, 200, 0.2) 0%, transparent 70%);
+        }
+        
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 25px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .btn {
+            padding: 16px 35px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background-color: #8D6E63;
+            color: #FFF;
+            box-shadow: 0 8px 20px rgba(141, 110, 99, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background-color: #5D4037;
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(93, 64, 55, 0.4);
+        }
+        
+        .btn-secondary {
+            background-color: #D7CCC8;
+            color: #5D4037;
+            box-shadow: 0 8px 20px rgba(93, 64, 55, 0.1);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #A1887F;
+            color: #FFF;
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(93, 64, 55, 0.2);
+        }
+        
+        /* Tips Section */
+        .tips-section {
+            max-width: 800px;
+            margin: 60px auto 0;
+            padding: 40px;
+            background-color: #D7CCC8;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(93, 64, 55, 0.1);
+        }
+        
+        .tips-title {
+            font-size: 1.8rem;
+            color: #5D4037;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .tips-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #8D6E63;
+        }
+        
+        .tips-list {
+            list-style-type: none;
+            text-align: left;
+        }
+        
+        .tips-list li {
+            margin-bottom: 20px;
+            padding-left: 40px;
+            position: relative;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        .tips-list li::before {
+            content: "•";
+            color: #8D6E63;
+            font-size: 2rem;
+            position: absolute;
+            left: 0;
+            top: -8px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #5D4037;
+            color: #D7CCC8;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #FFF;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        
+        .footer-logo span {
+            color: #D7CCC8;
+        }
+        
+        .copyright {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo-text {
+                font-size: 2rem;
+            }
+            
+            .error-number {
+                font-size: 9rem;
+            }
+            
+            .error-title {
+                font-size: 2.5rem;
+            }
+            
+            .error-message {
+                font-size: 1.3rem;
+                padding: 0 15px;
+            }
+            
+            .sneaker-illustration {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .sneaker-illustration i {
+                font-size: 6rem;
+            }
+            
+            .sneaker-illustration::before {
+                font-size: 9rem;
+            }
+            
+            .tips-section {
+                padding: 30px 20px;
+            }
+            
+            .tips-title {
+                font-size: 1.6rem;
+            }
+            
+            .btn {
+                padding: 14px 25px;
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .error-number {
+                font-size: 7rem;
+            }
+            
+            .error-title {
+                font-size: 2rem;
+            }
+            
+            .error-message {
+                font-size: 1.1rem;
+            }
+            
+            .sneaker-illustration {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .sneaker-illustration i {
+                font-size: 5rem;
+            }
+            
+            .sneaker-illustration::before {
+                font-size: 7rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .tips-list li {
+                padding-left: 30px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-newspaper logo-icon"></i>
+                <div class="logo-text">Sneaker<span>News</span></div>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <section class="error-content">
+            <div class="container">
+                <div class="sneaker-illustration">
+                    <i class="fas fa-shoe-prints"></i>
+                </div>
+                
+                <div class="error-number">404</div>
+                
+                <h1 class="error-title">Страница не найдена</h1>
+                
+                <p class="error-message">К сожалению, страница, которую вы ищете, не существует. Возможно, она была перемещена или удалена, или вы ввели неверный адрес.</p>
+                
+                <div class="action-buttons">
+                    <a href="/" class="btn btn-primary">
+                        <i class="fas fa-home"></i>
+                        На главную страницу
+                    </a>
+                    <a href="#" class="btn btn-secondary">
+                        <i class="fas fa-search"></i>
+                        Поиск новостей
+                    </a>
+                </div>
+                
+                <div class="tips-section">
+                    <h2 class="tips-title">Что можно сделать?</h2>
+                    <ul class="tips-list">
+                        <li>Проверьте правильность введенного адреса страницы</li>
+                        <li>Вернитесь на главную страницу и найдите нужную информацию через меню сайта</li>
+                        <li>Воспользуйтесь поиском по сайту, чтобы найти интересующие вас новости о кроссовках</li>
+                        <li>Если вы уверены, что страница должна существовать, свяжитесь с нами</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Sneaker<span>News</span> Hub</div>
+            <p class="copyright">© 2023 SneakerNews Hub. Все права защищены.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Анимация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.sneaker-illustration, .error-number, .error-title, .error-message, .action-buttons, .tips-section');
+            
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, index * 200 + 100);
+            });
+            
+            // Анимация для кнопок при наведении
+            document.querySelectorAll('.btn').forEach(btn => {
+                btn.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                btn.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Эффект для иконки кроссовка
+            const sneakerIcon = document.querySelector('.sneaker-illustration i');
+            sneakerIcon.style.transition = 'transform 0.5s ease';
+            
+            sneakerIcon.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1) rotate(10deg)';
+            });
+            
+            sneakerIcon.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) rotate(0)';
+            });
+            
+            // Эффект для цифры 404
+            const errorNumber = document.querySelector('.error-number');
+            let scale = 1;
+            let direction = 0.001;
+            
+            function pulseAnimation() {
+                scale += direction;
+                
+                if (scale > 1.02) {
+                    direction = -0.001;
+                } else if (scale < 0.98) {
+                    direction = 0.001;
+                }
+                
+                errorNumber.style.transform = `scale(${scale})`;
+                requestAnimationFrame(pulseAnimation);
+            }
+            
+            // Запускаем пульсацию через 2 секунды после загрузки
+            setTimeout(() => {
+                pulseAnimation();
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
