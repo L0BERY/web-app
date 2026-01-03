@@ -1,0 +1,25 @@
+new-sneacker.store {
+    reverse_proxy app:8080
+    
+    tls pipalopa54@gmail.com    
+    header {
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "DENY"
+        X-XSS-Protection "1; mode=block"
+        Referrer-Policy "strict-origin-when-cross-origin"
+    }
+    encode gzip
+    log {
+        output file /var/log/caddy/access.log {
+            roll_size 10mb
+            roll_keep 10
+        }
+    }
+}
+www.sneakernews.com {
+    redir https://sneakernews.com{uri} permanent
+}
+
+http://sneakernews.com {
+    redir https://sneakernews.com{uri} permanent
+}

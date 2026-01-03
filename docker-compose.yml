@@ -1,7 +1,47 @@
+# services:
+#   app:
+#     build: .
+#     container_name: web-page
+#     ports:
+#       - "80:8080"
+#     restart: unless-stopped
+
 services:
   app:
     build: .
-    container_name: web-page
-    ports:
-      - "80:8080"
+    container_name: sneakernews-app
+    expose:
+      - "8080"
     restart: unless-stopped
+
+  caddy:
+    image: caddy:2.8-alpine
+    container_name: caddy-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro  # Конфиг Caddy
+      - caddy_data:/data                     # Данные (сертификаты)
+      - caddy_config:/config                 # Конфигурация
+      - ./logs/caddy:/var/log/caddy          # Логи
+    environment:
+      - CADDY_DOMAIN=sneakernews.com
+    restart: unless-stopped
+    depends_on:
+      - app
+
+    healthcheck:
+      test: ["CMD", "caddy", "version"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  caddy_data:
+  caddy_config:
+
+networks:
+  default:
+    name: sneaker-network
+    driver: bridge
